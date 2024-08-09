@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../models/userModel.js";
 import DistributorModel from "../models/distributorModel.js";
 
 const VerifyToken = async (req, res, next) => {
   try {
     let token;
+    console.log(req.user);
     const { authorization } = req.headers;
     if (authorization && authorization.startsWith("Bearer")) {
 
