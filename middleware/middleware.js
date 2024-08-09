@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import UserModel from "../models/userModel.js";
+import DistributorModel from "../models/distributorModel.js";
 
 const VerifyToken = async (req, res, next) => {
   try {
@@ -9,7 +10,7 @@ const VerifyToken = async (req, res, next) => {
 
       token = authorization.split(" ")[1];
       const {userId} = jwt.verify(token, process.env.SECRET_KEY);
-      req.user = await UserModel.findById(userId);
+      req.user = await DistributorModel.findById(userId);
       next();
     } else {
       res
