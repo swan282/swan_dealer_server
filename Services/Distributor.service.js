@@ -90,5 +90,14 @@ export default class DistributorService {
         } catch (error) {
             return {status: false, message: error.message}
         }
-    } 
+    }
+    
+    loggedUser = async (user) => {
+        try {
+            const userData = await DistributorModel.findOne({_id: user._id});
+            return {status: true, data: userData} 
+        } catch (error) {
+            return {status: false, message: error.message}
+        }
+    }
 }

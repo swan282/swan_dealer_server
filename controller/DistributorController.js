@@ -5,6 +5,15 @@ export default class DistributorController {
         this.DistributorService = new DistributorService
     }
 
+    loginUser = async (req, res) => {
+        try {
+            const user = await this.DistributorService.loggedUser(req.user);
+            res.send(user);
+        } catch (error) {
+            res.send({status: false, message: error.message})
+        }
+    }
+
     dealerEmailVerify = async (req, res) => {
         try {
             const verify = await this.DistributorService.emailVerify(req.body);
@@ -34,6 +43,7 @@ export default class DistributorController {
 
     logInDealer = async (req, res) => {
         try {
+            console.log(req.body);
             const logIn = await this.DistributorService.logInDealer(req.body);
             res.send(logIn);
         } catch (error) {
