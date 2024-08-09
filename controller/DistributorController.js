@@ -7,7 +7,6 @@ export default class DistributorController {
 
     loginUser = async (req, res) => {
         try {
-            console.log(req.user);
             const user = await this.DistributorService.loggedUser(req.user);
             res.send(user);
         } catch (error) {
@@ -44,7 +43,6 @@ export default class DistributorController {
 
     logInDealer = async (req, res) => {
         try {
-            console.log(req.body);
             const logIn = await this.DistributorService.logInDealer(req.body);
             res.send(logIn);
         } catch (error) {

@@ -86,7 +86,7 @@ export default class DistributorService {
             if(compare_password === false) return {status: false, message: 'Password or Email mismatch'}
 
             const token = jwt.sign({dealerId: dealer._id}, process.env.SECRET_KEY, {expiresIn: '30d'})
-            return {status: true, message: 'User signed In Success' , token: token}
+            return {status: true, user: dealer, message: 'User signed In Success' , token: token}
         } catch (error) {
             return {status: false, message: error.message}
         }

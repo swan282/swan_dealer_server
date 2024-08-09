@@ -4,13 +4,12 @@ import DistributorModel from "../models/distributorModel.js";
 const VerifyToken = async (req, res, next) => {
   try {
     let token;
-    console.log(req.user);
     const { authorization } = req.headers;
     if (authorization && authorization.startsWith("Bearer")) {
 
       token = authorization.split(" ")[1];
-      const {userId} = jwt.verify(token, process.env.SECRET_KEY);
-      req.user = await DistributorModel.findById(userId);
+      const {dealerId} = jwt.verify(token, process.env.SECRET_KEY);
+      req.user = await DistributorModel.findById(dealerId);
       next();
     } else {
       res
