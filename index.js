@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import connectDB from './config/config.js';
+import productRouter from './routes/productsRoutes.js'
 import distRouter from './routes/distributorRoutes.js';
 import DistributorController from './controller/DistributorController.js';
 
@@ -23,6 +24,7 @@ app.use(cors({
         app.use(express.json());
 
         app.use('/api/dist', distRouter)
+        app.use('/api/prod', productRouter);
 
         app.listen(process.env.PORT, () => {
             console.log(`Server is listening on ${process.env.PORT}`);
